@@ -1,0 +1,122 @@
+Understanding the Data Types
+The Apex language is strongly typed so every variable in Apex will be declared with the specific data type. All apex variables are initialized to null initially. It is always recommended for a developer to make sure that proper values are assigned to the variables. Otherwise such variables when used, will throw null pointer exceptions or any unhandled exceptions.
+
+Apex supports the following data types −
+
+Primitive (Integer, Double, Long, Date, Datetime, String, ID, or Boolean)
+
+Collections (Lists, Sets and Maps) (To be covered in Chapter 6)
+
+sObject
+
+Enums
+
+Classes, Objects and Interfaces (To be covered in Chapter 11, 12 and 13)
+
+In this chapter, we will look at all the Primitive Data Types, sObjects and Enums. We will be looking at Collections, Classes, Objects and Interfaces in upcoming chapters since they are key topics to be learnt individually.
+
+Primitive Data Types
+In this section, we will discuss the Primitive Data Types supported by Apex.
+
+Integer
+A 32-bit number that does not include any decimal point. The value range for this starts from -2,147,483,648 and the maximum value is up to 2,147,483,647.
+
+Example
+
+We want to declare a variable which will store the quantity of barrels which need to be shipped to the buyer of the chemical processing plant.
+
+Integer barrelNumbers = 1000;
+system.debug(' value of barrelNumbers variable: '+barrelNumbers);
+The System.debug() function prints the value of variable so that we can use this to debug or to get to know what value the variable holds currently.
+
+Paste the above code to the Developer console and click on Execute. Once the logs are generated, then it will show the value of variable "barrelNumbers" as 1000.
+
+Boolean
+This variable can either be true, false or null. Many times, this type of variable can be used as flag in programming to identify if the particular condition is set or not set.
+
+Example
+
+If the Boolean shipmentDispatched is to be set as true, then it can be declared as −
+
+Boolean shipmentDispatched;
+shipmentDispatched = true;
+System.debug('Value of shipmentDispatched '+shipmentDispatched);
+Date
+This variable type indicates a date. This can only store the date and not the time. For saving the date along with time, we will need to store it in variable of DateTime.
+
+Example
+
+Consider the following example to understand how the Date variable works.
+
+//ShipmentDate can be stored when shipment is dispatched.
+Date ShipmentDate = date.today();
+System.debug('ShipmentDate '+ShipmentDate);
+Long
+This is a 64-bit number without a decimal point. This is used when we need a range of values wider than those provided by Integer.
+
+Example
+
+If the company revenue is to be stored, then we will use the data type as Long.
+
+Long companyRevenue = 21474838973344648L;
+system.debug('companyRevenue'+companyRevenue);
+Object
+We can refer this as any data type which is supported in Apex. For example, Class variable can be object of that class, and the sObject generic type is also an object and similarly specific object type like Account is also an Object.
+
+Example
+
+Consider the following example to understand how the bject variable works.
+
+Account objAccount = new Account (Name = 'Test Chemical');
+system.debug('Account value'+objAccount);
+Note − You can create an object of predefined class as well, as given below −
+
+//Class Name: MyApexClass
+MyApexClass classObj = new MyApexClass();
+This is the class object which will be used as class variable.
+
+String
+String is any set of characters within single quotes. It does not have any limit for the number of characters. Here, the heap size will be used to determine the number of characters. This puts a curb on the monopoly of resources by the Apex program and also ensures that it does not get too large.
+
+Example
+
+String companyName = 'Abc International';
+System.debug('Value companyName variable'+companyName);
+Time
+This variable is used to store the particular time. This variable should always be declared with the system static method.
+
+Blob
+The Blob is a collection of Binary data which is stored as object. This will be used when we want to store the attachment in salesforce into a variable. This data type converts the attachments into a single object. If the blob is to be converted into a string, then we can make use of the toString and the valueOf methods for the same.
+
+sObject
+This is a special data type in Salesforce. It is similar to a table in SQL and contains fields which are similar to columns in SQL. There are two types of sObjects – Standard and Custom.
+
+For example, Account is a standard sObject and any other user-defined object (like Customer object that we created) is a Custom sObject.
+
+Example
+
+//Declaring an sObject variable of type Account
+Account objAccount = new Account();
+
+//Assignment of values to fields of sObjects
+objAccount.Name = 'ABC Customer';
+objAccount.Description = 'Test Account';
+System.debug('objAccount variable value'+objAccount);
+
+//Declaring an sObject for custom object APEX_Invoice_c
+APEX_Customer_c objCustomer = new APEX_Customer_c();
+
+//Assigning value to fields
+objCustomer.APEX_Customer_Decscription_c = 'Test Customer';
+System.debug('value objCustomer'+objCustomer);
+Enum
+Enum is an abstract data type that stores one value of a finite set of specified identifiers. You can use the keyword Enum to define an Enum. Enum can be used as any other data type in Salesforce.
+
+Example
+
+You can declare the possible names of Chemical Compound by executing the following code −
+
+//Declaring enum for Chemical Compounds
+public enum Compounds {HCL, H2SO4, NACL, HG}
+Compounds objC = Compounds.HCL;
+System.debug('objC value: '+objC);
